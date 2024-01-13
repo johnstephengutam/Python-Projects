@@ -1,0 +1,16 @@
+{
+  "emp_details": [
+    {
+      "emp_name": "a",
+      "email": "a@g.com"
+    },
+    {
+      "emp_name": "b",
+      "email": "b@g.com"
+    },
+    {
+      "emp_name": "b",
+      "email": "b@g.com"
+    }
+  ]
+}
