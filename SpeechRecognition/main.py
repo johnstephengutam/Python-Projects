@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import speech_recognition as sr
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def recognize_speech():
+    # Initialize the recognizer
+    recognizer = sr.Recognizer()
 
+    # Use the default microphone as the audio source
+    with sr.Microphone() as source:
+        print("Say something...")
+        audio = recognizer.listen(source, timeout=5)  # Adjust the timeout as needed
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    try:
+        # Use the Google Web Speech API for recognition
+        text = recognizer.recognize_google(audio)
+        print("You said: " + text)
+    except sr.UnknownValueError:
+        print("Sorry, could not understand audio.")
+    except sr.RequestError as e:
+        print("Could not request results from Google Web Speech API; {0}".format(e))
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    recognize_speech()
